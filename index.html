@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Barber Scheduler · Sistema de agendamiento para barberías</title>
+<meta name="description" content="Barber Scheduler: aplicación web para agendar, gestionar y controlar citas en barberías. Proyecto SENATIC.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@700;900&family=Libre+Franklin:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header class="top">
+  <a class="logo" href="#inicio">Barber Scheduler</a>
+  <nav>
+    <a href="#problema">Problema</a>
+    <a href="#solucion">Solución</a>
+    <a href="#requisitos">Requisitos</a>
+    <a href="#datos">Datos</a>
+    <a href="#tecnologia">Tecnología</a>
+    <a href="#negocio">Negocio</a>
+  </nav>
+</header>
+
+<main>
+<section class="hero" id="inicio">
+  <p class="lema">Donde el barrio se corta con clase</p>
+  <h1>Barber<br>Scheduler</h1>
+  <p class="lead">Aplicación web para crear, consultar y validar citas de barbería, sin cruces de horario ni clientes que no llegan.</p>
+  <a class="btn" href="#solucion">Ver la solución</a>
+  <div class="pole" aria-hidden="true"></div>
+</section>
+
+<section id="problema">
+  <h2>Agendar por llamada o WhatsApp falla</h2>
+  <p class="intro">Hoy muchas barberías llevan sus citas en agendas de papel, llamadas y mensajes. Eso produce:</p>
+  <ul class="grid">
+    <li>Citas duplicadas o cruzadas</li>
+    <li>Barberos con dos clientes a la misma hora</li>
+    <li>Esperas largas en el local</li>
+    <li>Disponibilidad imposible de consultar en tiempo real</li>
+    <li>Inasistencias por falta de recordatorios</li>
+    <li>Errores en servicios y precios</li>
+  </ul>
+</section>
+
+<section id="solucion">
+  <h2>Una agenda que se valida sola</h2>
+  <p class="intro">Barber Scheduler digitaliza el agendamiento: el cliente reserva, modifica o cancela en línea; el barbero administra su disponibilidad; el sistema avisa con recordatorios automáticos.</p>
+  <h3>Objetivos</h3>
+  <ul class="plain">
+    <li>Registrar clientes, barberos, servicios y horarios.</li>
+    <li>Configurar la jornada y los descansos de cada barbero.</li>
+    <li>Asignar citas según servicio, barbero y horario.</li>
+    <li>Detectar conflictos de programación.</li>
+    <li>Consultar citas por cliente, barbero o día, y generar reportes básicos.</li>
+  </ul>
+  <h3>Servicios que maneja</h3>
+  <div class="cols">
+    <div><strong>Básicos</strong><p>Corte clásico, corte + barba, afeitado.</p></div>
+    <div><strong>Especializados</strong><p>Diseño de barba, tinte, tratamientos capilares.</p></div>
+    <div><strong>Combos</strong><p>Corte + barba + cejas, paquetes promocionales.</p></div>
+  </div>
+</section>
+
+<section id="requisitos" class="dark">
+  <h2>Requisitos del sistema</h2>
+  <div class="cols two">
+    <div>
+      <h3>Funcionales</h3>
+      <ul class="plain">
+        <li>Gestión de clientes, servicios y barberos</li>
+        <li>Horarios laborales y configuración de agenda</li>
+        <li>Asignación de citas: cliente, servicio, barbero, día y hora</li>
+        <li>Validación de conflictos</li>
+        <li>Consulta de agenda general, por barbero y por cliente, e historial</li>
+        <li>Disponibilidad de barberos</li>
+        <li>Recordatorios por correo o mensaje</li>
+        <li>Reportes: atendidas, canceladas y servicios más pedidos</li>
+      </ul>
+    </div>
+    <div>
+      <h3>No funcionales</h3>
+      <ul class="plain">
+        <li>Funciona en navegador y es responsivo para celular</li>
+        <li>Interfaz clara, sencilla e intuitiva</li>
+        <li>Datos validados antes de guardarse</li>
+        <li>Copias de seguridad</li>
+        <li>Seguridad de los datos personales</li>
+        <li>Arquitectura lista para pagos, fidelización y varias sedes</li>
+      </ul>
+    </div>
+  </div>
+
+  <h3>Reglas de negocio</h3>
+  <ul class="plain rules">
+    <li>Un barbero no puede tener dos citas simultáneas.</li>
+    <li>Un cliente no puede tener dos citas simultáneas.</li>
+    <li>No se agenda fuera del horario laboral ni durante el descanso del barbero.</li>
+    <li>La disponibilidad se calcula a partir de las citas; no se registra a mano.</li>
+    <li>Cada servicio tiene una duración predefinida y las citas guardan hora de inicio y fin.</li>
+    <li>El sistema es configurable para adaptarse a otras barberías.</li>
+  </ul>
+
+  <h3>Prueba el validador de conflictos</h3>
+  <form class="demo" id="demo">
+    <p class="note">Ejemplo: Carlos ya tiene una cita de 10:00 a 10:45 y descansa de 12:00 a 13:00 (jornada 08:00–18:00).</p>
+    <label>Servicio
+      <select id="srv">
+        <option value="30">Corte clásico (30 min)</option>
+        <option value="45">Corte + barba (45 min)</option>
+        <option value="60">Combo corte + barba + cejas (60 min)</option>
+      </select>
+    </label>
+    <label>Hora de inicio <input type="time" id="ini" value="10:30" step="900"></label>
+    <button class="btn" type="submit">Validar cita</button>
+    <p id="res" role="status" aria-live="polite"></p>
+  </form>
+</section>
+
+<section id="datos">
+  <h2>Modelo de datos</h2>
+  <p class="intro">Seis tablas relacionales, todas con relaciones uno a muchos.</p>
+  <div class="cols tables">
+    <div><strong>CLIENTE</strong><p>Quien agenda. Correo y fecha de registro.</p></div>
+    <div><strong>BARBERO</strong><p>Quien atiende. Incluye su especialidad.</p></div>
+    <div><strong>SERVICIO</strong><p>Catálogo con nombre, duración y precio.</p></div>
+    <div><strong>HORARIO_DISPONIBLE</strong><p>Bloques de trabajo de cada barbero por día.</p></div>
+    <div><strong>CITA</strong><p>Une cliente, barbero y servicio, con estado (ej. Confirmada).</p></div>
+    <div><strong>NOTIFICACIÓN</strong><p>Recordatorios y confirmaciones de cada cita.</p></div>
+  </div>
+  <p class="note">Un cliente tiene muchas citas · un barbero atiende muchas citas y tiene muchos horarios · un servicio aparece en muchas citas · una cita genera varias notificaciones.</p>
+</section>
+
+<section id="tecnologia" class="dark">
+  <h2>Tecnología y arquitectura</h2>
+  <p class="intro">Tres capas: interfaz, lógica del servidor y base de datos.</p>
+  <dl class="stack">
+    <div><dt>Lenguaje</dt><dd>JavaScript</dd></div>
+    <div><dt>Front-end</dt><dd>React</dd></div>
+    <div><dt>Back-end</dt><dd>Node.js</dd></div>
+    <div><dt>Base de datos</dt><dd>MySQL o Firebase</dd></div>
+    <div><dt>Notificaciones</dt><dd>Nodemailer o Twilio</dd></div>
+    <div><dt>Diseño</dt><dd>Figma</dd></div>
+    <div><dt>Código</dt><dd>VS Code y GitHub</dd></div>
+    <div><dt>Hosting</dt><dd>Vercel, Render o Firebase Hosting</dd></div>
+  </dl>
+
+  <h3>MVP: la primera versión incluye</h3>
+  <ol class="plain mvp">
+    <li>Registro de clientes, servicios y barberos</li>
+    <li>Horarios laborales</li>
+    <li>Creación y asignación de citas</li>
+    <li>Detección de conflictos</li>
+    <li>Consulta de agenda</li>
+    <li>Recordatorio automático</li>
+    <li>Un reporte básico</li>
+  </ol>
+  <h3>Después del MVP</h3>
+  <p>Pagos en línea, puntos por cliente frecuente, reprogramación automática, exportación a Excel y PDF, inventario de insumos y varias sedes.</p>
+</section>
+
+<section id="negocio">
+  <h2>Modelo de negocio</h2>
+  <div class="cols two">
+    <div>
+      <h3>Para quién</h3>
+      <ul class="plain">
+        <li>Barberías locales que quieren digitalizar su agenda</li>
+        <li>Barberos independientes con clientes fijos</li>
+        <li>Clientes que quieren reservar sin llamar</li>
+      </ul>
+      <h3>Qué ofrece</h3>
+      <ul class="plain">
+        <li>Reserva en línea en pocos pasos</li>
+        <li>Menos inasistencias con recordatorios</li>
+        <li>Menos citas duplicadas y menos espera</li>
+        <li>Panel con estadísticas básicas</li>
+      </ul>
+    </div>
+    <div>
+      <h3>Cómo llega al cliente</h3>
+      <ul class="plain">
+        <li>Aplicación web y móvil</li>
+        <li>WhatsApp para confirmaciones y soporte</li>
+        <li>Redes sociales y recomendación directa de la barbería</li>
+      </ul>
+      <h3>Cómo genera ingresos</h3>
+      <ul class="plain">
+        <li>Suscripción mensual por barbería</li>
+        <li>Plan premium con estadísticas avanzadas</li>
+        <li>Comisión opcional por cita agendada</li>
+      </ul>
+      <h3>Aliados y costos</h3>
+      <p>Barberías piloto, hosting, API de mensajería y pasarela de pagos. Los costos son hosting, notificaciones, mantenimiento, soporte y marketing.</p>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer>
+  <p><strong>Barber Scheduler</strong> · Proyecto productivo SENATIC · Programación de Software, regional Cundinamarca</p>
+  <p>Thomas Alejandro Ardila Hernández · Puerto Salgar</p>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>
