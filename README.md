@@ -1,24 +1,17 @@
-# Barber Scheduler
+# BARBERÍA QR · MVP
 
-Sistema de agendamiento de citas para barberías. Proyecto productivo SENATIC (Programación de Software, regional Cundinamarca).
+Sistema web de barbería con registro de clientes, tarjeta QR, fidelización (9 cortes pagados + décimo gratis), citas por barbero, registro de particulares, distribución 50/50, 40/60, 60/40 y reportes.
 
-Página web informativa con el problema, la solución, los requisitos (SRS), el modelo de datos, la tecnología propuesta y el modelo de negocio (Canvas), más un validador de conflictos de ejemplo.
+**Tecnologías:** HTML, CSS, JavaScript, Supabase Auth, PostgreSQL/RLS, GitHub Pages.
 
-**Autor:** Thomas Alejandro Ardila Hernández
+**Comienza aquí:** [GUIA_INSTALACION.md](GUIA_INSTALACION.md).
 
-## Estructura
+**Orden obligatorio:** crear proyecto Supabase nuevo → ejecutar `supabase/schema.sql` → completar `config.js` → registrar administrador y asignarle rol por SQL → registrar/activar barberos → subir archivos a GitHub Pages.
 
-- `index.html`: contenido de la página
-- `style.css`: estilos
-- `script.js`: validador de conflictos de ejemplo
+**Importante:** No incluyas claves secretas en `config.js`. La base de datos de COFFEE REGISTER no debe reutilizarse.
 
-## Ver la página
+**Estado:** código fuente entregado como MVP inicial; requiere configuración de Supabase y pruebas funcionales con cuentas reales antes de usar en producción.
 
-Abre `index.html` en el navegador.
 
-## Publicar en GitHub Pages
-
-1. Crea un repositorio y sube estos archivos a la raíz.
-2. Ve a **Settings → Pages**.
-3. En **Source** elige **Deploy from a branch**, rama `main`, carpeta `/ (root)`.
-4. Guarda. La página queda en `https://TU-USUARIO.github.io/NOMBRE-DEL-REPO/`.
+## Identidad visual
+Logo original de BARBER SCHEDULER en `assets/barber-scheduler-logo.png`, visible en el encabezado, la pantalla de acceso y como favicon.
